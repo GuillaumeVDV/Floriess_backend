@@ -1,16 +1,18 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
+const adminRoutes = require('./routes/admin');
+const calendarRoutes = require('./routes/calendar');
 
-app.use('/Users', (req, res, next) => {
-  console.log('This is a user page!');
-  res.send('<h1>The User" Page</h1>');
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('admin',adminRoutes);
+app.use('calendar',calendarRoutes);
 
 app.use('/', (req, res, next) => {
-  console.log('In another middleware!');
-  res.send('<h1>Hello from Express!</h1>');
+  res.status(404).send('<h1>Page not found</h1>');
 });
 
 app.listen(3000);
