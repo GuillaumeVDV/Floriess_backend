@@ -1,10 +1,10 @@
+const path = require('path');
 const express = require('express');
 
 const router = express.Router();
 
-router.post('/add-date', (req, res, next) => {
-    console.log('This is a user page!');
-    res.send('<h1>The User" Page</h1>');
+router.get('/add-date', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../', 'views', 'admin.html'));
   });
 
 

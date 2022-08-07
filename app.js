@@ -8,10 +8,10 @@ const calendarRoutes = require('./routes/calendar');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('admin',adminRoutes);
-app.use('calendar',calendarRoutes);
+app.use('/admin',adminRoutes);
+app.use('/calendar',calendarRoutes);
 
-app.use('/', (req, res, next) => {
+app.use((req, res, next) => {
   res.status(404).send('<h1>Page not found</h1>');
 });
 
