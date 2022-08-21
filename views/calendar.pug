@@ -1,0 +1,19 @@
+extends layouts/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/date.css") 
+
+
+block content
+    main 
+        h1 Beschikbare data 
+        p Lijst van alle data
+
+        if dates.length > 0
+            each date in dates
+                div.date
+                    h2 #{ date.date }
+                    p #{ date.start } - #{ date.end }               
+
+        else 
+            h1 Geen beschikbare data

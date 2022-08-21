@@ -1,0 +1,28 @@
+extends layouts/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/date.css")
+
+block content
+    main
+        h1 Datum toevoegen
+
+        form.add-date__form(action="/add-date", method="POST") 
+
+            div.form-group      
+
+                .form-control 
+                    label(for="date") Datum : 
+                    input#date(type="date" name="date")    
+
+                .form-control
+                    label(for="time") Van :
+                    input#time(type="time" name="start")
+
+                .form-control
+                    label(for="time") Tot :
+                    input#time(type="time" name="end")
+
+                button.btn(type="submit") Tijdstip toevoegen   
+    
