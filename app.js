@@ -7,15 +7,13 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
-const calendarRoutes = require('./routes/calendar');
+const calendarRoutes = require('./routes/calendarRoutes');
+const errorController = require('./controllers/errorController');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/',calendarRoutes);
-
-app.use((req, res, next) => {
-  res.status(404).send('<h1>Page not found</h1>');
-});
+app.use(errorController.get404);
 
 app.listen(3000);
